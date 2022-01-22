@@ -1,0 +1,29 @@
+select "types"
+select "std"
+
+func y(x) {
+    x = double(x);
+    return (1 / (1 + x * x))
+}
+
+func trapezoidal(a, b, n) {
+    a = double(a)
+    b = double(b)
+    n = double(n)
+    k = (b - a) / n
+    s = (y(a) + y(b))
+    i = 1
+
+    while i < n
+        s += 2 * y(a + i *k)
+        i += 1
+    end
+    
+    return ((k / 2) * s)
+}
+
+x0 = 0
+xn = 1
+n = 6
+
+showln "Value of integral is " + sprintf("%.4g%n, trapezoidal(x0, xn, n))
